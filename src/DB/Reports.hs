@@ -19,7 +19,6 @@ import Data.Proxy (Proxy (..))
 import Data.Text (Text)
 import qualified Data.Text as T
 import Data.Time (Day)
-import Database.MySQL.Base (MySQLValue (..))
 import DB.Convert
 import DB.Repository
 import Domain.Entity
