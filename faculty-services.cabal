@@ -1,0 +1,56 @@
+cabal-version:      3.0
+name:               faculty-services
+version:            0.1.0.0
+synopsis:           Інформаційні сервіси мережі факультету - Haskell + MySQL
+description:        Лабораторна робота 1 (варіант 4): класи та екземпляри типів, MySQL, веб-інтерфейс.
+build-type:         Simple
+extra-doc-files:    README.md
+
+common warnings
+    ghc-options: -Wall -Wcompat -Wincomplete-uni-patterns -Wincomplete-record-updates
+    default-language: GHC2021
+
+library
+    import:           warnings
+    hs-source-dirs:   src
+    exposed-modules:
+        Config
+        Domain.Entity
+        Domain.Model
+        Domain.Instances
+        Domain.Form
+        Domain.Registry
+        DB.Convert
+        DB.Repository
+        DB.Reports
+        Web.Views
+        Web.App
+    build-depends:
+        base >=4.17 && <5,
+        blaze-html,
+        blaze-markup,
+        bytestring,
+        containers,
+        io-streams,
+        mysql-haskell >=1.3,
+        http-types,
+        resource-pool >=0.4,
+        scotty >=0.20,
+        wai,
+        wai-extra,
+        text,
+        time
+
+executable faculty-services
+    import:           warnings
+    hs-source-dirs:   app
+    main-is:          Main.hs
+    ghc-options:      -threaded -rtsopts "-with-rtsopts=-N"
+    build-depends:    base, faculty-services
+
+test-suite spec
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Spec.hs
+    build-depends:    base, containers, text, time, faculty-services

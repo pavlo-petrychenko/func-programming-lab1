@@ -1,0 +1,13 @@
+packages: .
+
+-- mysql-haskell та кілька його залежностей ще не оголосили підтримку GHC 9.14
+allow-newer:
+  mysql-haskell:base,
+  mysql-haskell:time,
+  mysql-haskell:text,
+  mysql-haskell:bytestring,
+  mysql-haskell:containers,
+  mysql-haskell:template-haskell,
+  word24:base,
+  wire-streams:base,
+  tcp-streams:base
